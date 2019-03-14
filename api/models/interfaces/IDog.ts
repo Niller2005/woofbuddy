@@ -5,5 +5,5 @@ export interface IDog {
   name: string;
   race: string;
   age: number;
-  reservations: Reservation[];
+  reservations?: Reservation[];
 }

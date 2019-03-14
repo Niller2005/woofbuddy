@@ -2,7 +2,12 @@
   <div>
     <h1>Contacts</h1>
     <form class="form-inline my-2 my-lg-0" v-on:submit.prevent="onSearch">
-      <input class="form-control form-control form-control-sm" type="text" v-model="searchQuery" placeholder="Search" />
+      <input
+        class="form-control form-control form-control-sm"
+        type="text"
+        v-model="searchQuery"
+        placeholder="Search"
+      >
       <button class="btn btn-outline-success btn-sm" type="submit">Search</button>&nbsp;
     </form>
     <p v-if="hasNoSearchResults">No results!</p>
@@ -23,13 +28,21 @@
           <td>{{contact.email}}</td>
           <td>{{contact.phone}}</td>
           <td>
-            <router-link class="btn btn-success" :to="{name: 'editContact', params: { id: contact.id }}">edit</router-link>
+            <router-link
+              class="btn btn-success"
+              :to="{name: 'editContact', params: { id: contact.id }}"
+            >edit</router-link>
             <button type="button" class="btn btn-link" v-on:click="deleteContact(contact)">delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-primary" v-if="isSearchMode" v-on:click="showAll">clear search</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      v-if="isSearchMode"
+      v-on:click="showAll"
+    >clear search</button>
     <router-link class="btn btn-success" to="/contacts/new">add</router-link>
   </div>
 </template>
@@ -44,42 +57,41 @@ export default class Contacts extends Vue {
   contacts: Array<IContact> = [];
   editContact: Object = null;
   isSearchMode = false;
-  searchQuery: string =  "";
+  searchQuery: string = "";
 
-  created(){
+  created() {
     this.showAll();
   }
 
   showAll() {
     let contactService = new ContactService();
-        contactService.fetchAll().then((response) => {
-          this.searchQuery = "";
-          this.contacts = response.content;
-          this.isSearchMode = false;
-        });
-    }
-
-    onSearch() {
-      let contactService = new ContactService();
-        contactService.search(this.searchQuery).then((response) => {
-          this.contacts = response.content;
-          this.isSearchMode = true;
-        });
-    }
-
-    deleteContact(contact: IContact) {
-      let contactService = new ContactService();
-        contactService.delete(contact.id).then((response) => {
-            let updatedContacts = this.contacts;
-            updatedContacts.splice(updatedContacts.indexOf(contact), 1);
-            this.contacts = updatedContacts;
-        });
-    }
-
-    get hasNoSearchResults() {
-     return this.searchQuery && this.contacts && this.contacts.length == 0;
+    contactService.fetchAll().then(response => {
+      this.searchQuery = "";
+      this.contacts = response.content;
+      this.isSearchMode = false;
+    });
   }
 
+  onSearch() {
+    let contactService = new ContactService();
+    contactService.search(this.searchQuery).then(response => {
+      this.contacts = response.content;
+      this.isSearchMode = true;
+    });
+  }
+
+  deleteContact(contact: IContact) {
+    let contactService = new ContactService();
+    contactService.delete(contact.id).then(response => {
+      let updatedContacts = this.contacts;
+      updatedContacts.splice(updatedContacts.indexOf(contact), 1);
+      this.contacts = updatedContacts;
+    });
+  }
+
+  get hasNoSearchResults() {
+    return this.searchQuery && this.contacts && this.contacts.length == 0;
+  }
 }
 </script>
 

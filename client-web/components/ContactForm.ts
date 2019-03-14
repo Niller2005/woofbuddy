@@ -1,7 +1,7 @@
-import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
-import ContactService, { IContact } from "../services/Contacts";
-import { IError } from "../services/RestUtilities";
+import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
+import ContactService, { IContact } from '../services/Contacts';
+import { IError } from '../services/RestUtilities';
 
 @Component
 export default class ContactForm extends Vue {
@@ -31,10 +31,10 @@ export default class ContactForm extends Vue {
       });
     } else {
       let newContact: IContact = {
-        lastName: "",
-        firstName: "",
-        email: "",
-        phone: ""
+        lastName: '',
+        firstName: '',
+        email: '',
+        phone: ''
       };
       this.contact = newContact;
     }
@@ -57,6 +57,6 @@ export default class ContactForm extends Vue {
   }
 
   firstError(errors: string[]) {
-    return errors ? errors[0] : "";
+    return errors ? errors[0] : '';
   }
 }
