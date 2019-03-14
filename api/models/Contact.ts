@@ -1,8 +1,7 @@
-import "reflect-metadata";
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-import { Length } from "class-validator";
-import { IsOptional, MinLength, IsEmail } from "./Validators";
-import { IContact } from "./interfaces/IContact";
+import 'reflect-metadata';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { IContact } from './interfaces/IContact';
+import { IsEmail, IsOptional, MinLength } from './Validators';
 
 @Entity()
 export default class Contact implements IContact {

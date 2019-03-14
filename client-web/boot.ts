@@ -1,14 +1,17 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import App from "./App.vue";
-import AuthLayout from "./layouts/Auth.vue";
-import DefaultLayout from "./layouts/Default.vue";
-import SignIn from "./pages/SignIn.vue";
-import Register from "./pages/Register.vue";
-import Contacts from "./pages/Contacts.vue";
-import ContactForm from "./components/ContactForm.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from './App.vue';
+import AuthLayout from './layouts/Auth.vue';
+import DefaultLayout from './layouts/Default.vue';
+import SignIn from './pages/SignIn.vue';
+import Register from './pages/Register.vue';
+import Parks from './pages/Parks.vue';
+import Dogs from './pages/Dogs.vue';
+import Reservations from './pages/Reservations.vue';
+import Contacts from './pages/Contacts.vue';
+import ContactForm from './components/ContactForm.vue';
 
-Vue.directive("focus", {
+Vue.directive('focus', {
   inserted: function(el) {
     el.focus();
   }
@@ -17,25 +20,28 @@ Vue.directive("focus", {
 Vue.use(VueRouter);
 
 let router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   routes: [
     {
-      path: "",
+      path: '',
       component: AuthLayout,
       children: [
-        { path: "/", component: SignIn },
-        { path: "/register", component: Register }
+        { path: '/', component: SignIn },
+        { path: '/register', component: Register }
       ]
     },
     {
-      path: "",
+      path: '',
       component: DefaultLayout,
       children: [
-        { path: "/contacts", component: Contacts },
-        { path: "/contacts/new", component: ContactForm },
+        { path: '/parks', component: Parks },
+        { path: '/dogs', component: Dogs },
+        { path: '/resevations', component: Reservations },
+        { path: '/contacts', component: Contacts },
+        { path: '/contacts/new', component: ContactForm },
         {
-          path: "/contacts/edit/:id",
-          name: "editContact",
+          path: '/contacts/edit/:id',
+          name: 'editContact',
           component: ContactForm
         }
       ]
@@ -44,7 +50,7 @@ let router = new VueRouter({
 });
 
 new Vue({
-  el: "#app",
+  el: '#app',
   router: router,
   render: h => h(App, {})
 });

@@ -45,14 +45,28 @@ export default class DbInitializer {
 
     // Create test user
     let email = "user@test.com";
-    let exists = !!await userRepo.findOne({ email });
-    if (!exists) {
+    let u1exists = !! await userRepo.findOne({ email });
+    if (!u1exists) {
       let user1 = new User();
       user1.email = "user@test.com";
       let hashedPassword = await bcrypt.hash("P2ssw0rd!", 3);
       user1.hashedPassword = hashedPassword;
       user1.emailConfirmed = true;
+      user1.admin = false;
       await userRepo.save(user1);
+    }
+
+    // Create test admin
+    email = "admin@test.com";
+    let u2exists = !! await userRepo.findOne({ email });
+    if(!u2exists){
+      let user2 = new User();
+      user2.email = "admin@test.com";
+      let hashedPassword = await bcrypt.hash("admin", 3);
+      user2.hashedPassword = hashedPassword;
+      user2.emailConfirmed = true;
+      user2.admin = true;
+      await userRepo.save(user2);
     }
 
     // Create test contacts

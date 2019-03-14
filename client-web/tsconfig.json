@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    },
     "sourceMap": true,
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "experimentalDecorators": true,
     "module": "es2015",
     "target": "es5",
