@@ -80,6 +80,7 @@
     "routing-controllers": "^0.7.0",
     "typeorm": "^0.1.0-alpha.10",
     "vue-googlemaps": "0.1.2",
+    "vue-moment": "4.0.0",
     "vue2-google-maps": "0.10.6",
     "webpack": "^2.3.3"
   }

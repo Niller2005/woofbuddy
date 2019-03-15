@@ -53,8 +53,8 @@ export default {
           '<h1 id="firstHeading" class="firstHeading">' + coord.location + '</h1>' +
           '<div id="bodyContent">' +
           '<p>' + coord.description + '</p>' +
-          '<p><a href="/booking/' + coord.id + '">' +
-          'Book en tid</a></p>' +
+          '<p><a href="/resevations/new/' + coord.id + '">' +
+          '<h3>Book en dag</h3></a></p>' +
           '</div>' +
           '</div>';
         attachSecretMessage(marker, contentString);
@@ -78,7 +78,7 @@ export default {
 </script>
 <style scoped>
 .google-map {
-  width: 800px;
+  width: 100%;
   height: 600px;
   margin: 0 auto;
   background: gray;

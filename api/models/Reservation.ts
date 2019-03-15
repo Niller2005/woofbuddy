@@ -7,7 +7,8 @@ import {
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  Column
 } from 'typeorm';
 
 import Dog from './Dog';
@@ -21,6 +22,9 @@ export default class Reservation {
 
   @ManyToOne(type => Park, park => park.reservations)
   park: Park;
+
+  @Column({ type: 'timestamp' })
+  date: Date;
 
   @ManyToMany(type => Dog, dog => dog.reservations)
   @JoinTable()

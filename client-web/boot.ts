@@ -9,6 +9,7 @@ import Parks from './pages/Parks.vue';
 import Dogs from './pages/Dogs.vue';
 import DogForm from './components/DogForm.vue';
 import Reservations from './pages/Reservations.vue';
+import ReservationForm from './components/ReservationForm.vue';
 import Contacts from './pages/Contacts.vue';
 import ContactForm from './components/ContactForm.vue';
 
@@ -18,6 +19,11 @@ Vue.directive('focus', {
   }
 });
 
+import moment from 'moment';
+require('moment/locale/da');
+Vue.use(require('vue-moment'), {
+  moment
+});
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -37,6 +43,7 @@ let router = new VueRouter({
       children: [
         { path: '/parks', component: Parks },
         { path: '/resevations', component: Reservations },
+        { path: '/resevations/new/:park', component: ReservationForm },
         { path: '/dogs', component: Dogs },
         { path: '/dogs/new', component: DogForm },
         { path: '/contacts', component: Contacts },

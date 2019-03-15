@@ -16,7 +16,7 @@
           <td>{{dog.race}}</td>
           <td>{{dog.age}}</td>
           <td>
-            <button type="button" class="btn btn-link" v-on:click="deleteDog(dog)">delete</button>
+            <button type="button" class="btn btn-danger" v-on:click="deleteDog(dog)">Slet</button>
           </td>
         </tr>
       </tbody>

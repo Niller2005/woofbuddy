@@ -2,6 +2,7 @@
   <div>
     <h1>Parker</h1>
     <google-map name="woofbuddy"></google-map>
+    <p>Vælg en park på kortet for at booke en dag</p>
   </div>
 </template>
 <script lang="ts">
